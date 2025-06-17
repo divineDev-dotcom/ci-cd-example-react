@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master  # or main
+      - master  # or 'main' if your default branch is 'main'
 
 jobs:
   build-test-deploy:
@@ -16,7 +16,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20'  # or 18
+        node-version: '20'
 
     - name: Install dependencies
       run: npm install
@@ -29,7 +29,7 @@ jobs:
 
     - name: Deploy to GitHub Pages
       if: success()
-      uses: peaceiris/actions-gh-pages@v4
+      uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build  # or ./dist
+        publish_dir: ./dist
