@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # or master
+      - master  # or main
 
 jobs:
   build-test-deploy:
